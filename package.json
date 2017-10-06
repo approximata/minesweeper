@@ -1,0 +1,25 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Simple web version of minesweeper",
+  "main": "main.js",
+  "scripts": {
+    "test": "ava --esnext *.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/approximata/minesweeper.git"
+  },
+  "keywords": [
+    "minesweeper"
+  ],
+  "author": "Mate Bodor Kovacs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/approximata/minesweeper/issues"
+  },
+  "homepage": "https://github.com/approximata/minesweeper#readme",
+  "dependencies": {
+    "ava": "^0.22.0"
+  }
+}
