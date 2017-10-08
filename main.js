@@ -18,20 +18,46 @@ const gameTypes = {
 let config = {
   EMPTY_FIELD: 0,
   MINE_FIELD: 1,
-  GAMETYPE: gameTypes.easy
+  GAMETYPE: gameTypes.master
 }
 
+function isMinePlanted(minesPositions, position){
+  return minesPositions.some(minePosition => minePosition[0] === position[0] && minePosition[1] === position[1])
+}
 
-function generateEmpty(){
-  const range = (length) => Array.from({length}, (e, i) => i)
-
-  const _ = config.EMPTY_FIELD
+function minePlant(){
   const rows = config.GAMETYPE.size[0]
-  const colomns = config.GAMETYPE.size[1]
-  return range(rows).map(() => range(colomns).fill(_))
+  const columns = config.GAMETYPE.size[1]
+  return [Math.floor((Math.random() * rows) + 1), Math.floor((Math.random() * columns) + 1)]
 }
 
-
-function generateMinesField(type) {
-
+function createMines() {
+  let minesPositions = []
+  let minePosition = []
+  const mines = config.GAMETYPE.mines
+  for(let i = 0; i < mines; i++) {
+    minePosition = minePlant()
+    while(isMinePlanted(minesPositions, minePosition)){
+      minePosition = minePlant()
+    }
+    minesPositions.push(minePosition)
+  }
+  return minesPositions
 }
+
+function generateTable(){
+  const rows = config.GAMETYPE.size[0]
+  const columns = config.GAMETYPE.size[1]
+  const mines = createMines()
+  let gameTable = []
+  for(let row = 0; row < rows; row++){
+    gameTable.push([])
+    for(let column = 0; column < columns; column++){
+      let fieldType = isMinePlanted(mines, [row, column]) ? 1 : 0
+      gameTable[row].push(fieldType)
+    }
+  }
+  return gameTable
+}
+
+console.log(generateTable());
