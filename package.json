@@ -4,7 +4,8 @@
   "description": "Simple web version of minesweeper",
   "main": "main.js",
   "scripts": {
-    "test": "ava --esnext *.test.js"
+    "test": "ava --esnext *.test.js",
+    "start": "http-server -p 9090 ."
   },
   "repository": {
     "type": "git",
