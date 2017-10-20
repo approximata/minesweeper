@@ -1,0 +1,17 @@
+.main-table{
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row{
+  height: 10px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.cell{
+  border: solid 1px red;
+  width: 10px;
+}
